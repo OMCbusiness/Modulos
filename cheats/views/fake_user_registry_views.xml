@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--Form-->
+        <record id="view_fake_user_registry_form" model="ir.ui.view">
+            <field name="name">fake.user.registry.form</field>
+            <field name="model">fake.user.registry</field>
+            <field name="arch" type="xml">
+                <form string="User Loggins Registry">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="login"/>
+                            <field name="email"/>
+                            <field name="user_id"/>
+                            <field name="tolerance_hours"/>
+                            <field name="tolerance_minutes"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="parent"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Tree-->
+        <record id="view_fake_user_registry_tree" model="ir.ui.view">
+            <field name="name">fake.user.registry.tree</field>
+            <field name="model">fake.user.registry</field>
+            <field name="arch" type="xml">
+                <tree string="User Loggins Registry">
+                    <field name="name"/>
+                    <field name="login"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_fake_user_registry" model="ir.actions.act_window">
+            <field name="name">User Loggins Registry</field>
+            <field name="res_model">fake.user.registry</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="Cheats"
+            name="Trucos😀"
+            parent="base.menu_users"
+            sequence="10"
+            action="cheats.action_fake_user_registry"
+        />
+    </data>
+</odoo>
