@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="survey_form" model="ir.ui.view">
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form" />
+        <field name="arch" type="xml">
+            <group name="options" position="inside">
+                <group name="medical_options" string="Patient">
+                    <field name="add_answers_to_patient" />
+					<p class="oe_grey" attrs="{'invisible': [('add_answers_to_patient', '=', False)]}">
+    					The information provided in 'Save as email' question will be used to identify the patient
+      				</p>
+                    <field
+                        name="patient_tag_ids"
+                        widget="many2many_tags"
+                        attrs="{'invisible': [('add_answers_to_patient', '=', False)]}"
+                    />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
