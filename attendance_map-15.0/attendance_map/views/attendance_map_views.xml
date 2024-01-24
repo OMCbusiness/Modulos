@@ -1,0 +1,70 @@
+<odoo>
+
+    <record id="hr_attendance.hr_attendance_action" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,google_map</field>
+    </record>
+    
+<!--
+    <record id="action_attendance_form_view3" model="ir.actions.act_window.view">
+        <field eval="3" name="sequence"/>
+        <field name="view_mode">google_map</field>
+        <field name="view_id" ref="view_res_partner_google_map"/>
+        <field name="act_window_id" ref="base.action_partner_form"/>
+    </record>
+-->
+
+	<record id="view_attendance_google_map" model="ir.ui.view">
+        <field name="name">view.hr.attendance.google_map</field>
+        <field name="model">hr.attendance</field>
+        <field name="arch" type="xml">
+            <google_map class="o_res_partner_map" string="Check-ins" lat="check_in_latitude" lng="check_in_longitude" sidebar_title="employee_id" sidebar_subtitle="worked_hours">
+                <field name="id"/>
+                <field name="check_in_latitude"/>
+                <field name="check_in_longitude"/>
+                <field name="employee_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="attendance_reason_ids"/>
+                <field name="check_out_latitude"/>
+                <field name="check_out_longitude"/>
+                <field name="department_id"/>
+                <field name="display_name"/>
+                <field name="worked_hours"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record_has_image_fill o_res_partner_kanban">
+         <!-- 
+                            <t t-if="!record.is_company.raw_value">
+                                <t t-if="record.type.raw_value === 'delivery'" t-set="placeholder" t-value="'/base/static/img/truck.png'"/>
+                                <t t-elif="record.type.raw_value === 'invoice'" t-set="placeholder" t-value="'/base/static/img/money.png'"/>
+                                <t t-else="" t-set="placeholder" t-value="'/base/static/img/avatar_grey.png'"/>
+                                <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.id.raw_value,  placeholder)}')">
+                                    <img class="o_kanban_image_inner_pic" t-if="record.parent_id.raw_value" t-att-alt="record.parent_id.value" t-att-src="kanban_image('res.partner', 'image_128', record.parent_id.raw_value)"/>
+                                </div>
+                                <div class="o_kanban_image rounded-circle d-md-none" t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.id.raw_value,  placeholder)}')">
+                                    <img class="o_kanban_image_inner_pic" t-if="record.parent_id.raw_value" t-att-alt="record.parent_id.value" t-att-src="kanban_image('res.partner', 'image_128', record.parent_id.raw_value)"/>
+                                </div>
+                            </t>
+                            <t t-elif="record.image_128.raw_value">
+                                <t t-set="placeholder" t-value="'/base/static/img/company_image.png'"/>
+                                <div class="o_kanban_image_fill_left o_kanban_image_full" t-attf-style="background-image: url(#{kanban_image('res.partner', 'image_128', record.id.raw_value, placeholder)})" role="img"/>
+                            </t>
+        -->
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_partner_heading"><field name="employee_id"/></strong>
+                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                <ul>
+                                    <li><field name="display_name"/></li>
+                                    <li t-if="record.check_in.raw_value"><field name="check_in"/></li>
+                                    <li t-if="record.check_out.raw_value"><field name="check_out"/></li>
+                                </ul>
+                                <div class="oe_kanban_partner_links"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </google_map>
+        </field>
+    </record>
+    
+</odoo>
