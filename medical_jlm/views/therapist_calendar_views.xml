@@ -1,0 +1,61 @@
+<odoo>
+	<record id="therapist_calendar_form_view" model="ir.ui.view">
+		<field name="name">Therapist calendar form view</field>
+		<field name="model">medical.therapist.calendar</field>
+		<field name="arch" type="xml">
+		<form string="Working Time">
+                <sheet string="Working Time">
+                    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_button_box" name="button_box">
+                        <!-- <button name="91" type="action" string="Time Off" icon="fa-plane" class="oe_stat_button" groups="base.group_no_one"/> -->
+                    </div>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group name="resource_details">
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="hours_per_day" widget="float_time"/>
+                            <field name="tz" widget="timezone_mismatch" options="{'tz_offset_field': 'tz_offset', 'mismatch_title': 'Timezone Mismatch : This timezone is different from that of your browser.\nPlease, be mindful of this when setting the working hours or the time off.'}"/>
+                            <field name="tz_offset" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Working Hours" name="working_hours">
+                        <button name="switch_calendar_type" attrs="{'invisible':[('two_weeks_calendar', '=', True)]}" string="Switch to 2 weeks calendar" type="object" confirm="Are you sure you want to switch this calendar to 2 weeks calendar ? All entries will be lost"/>
+                        <button name="switch_calendar_type" attrs="{'invisible':[('two_weeks_calendar', '=', False)]}" string="Switch to 1 week calendar" type="object" confirm="Are you sure you want to switch this calendar to 1 week calendar ? All entries will be lost"/>
+                        <field name="two_weeks_calendar" invisible="1"/>
+
+                        <group attrs="{'invisible':[('two_weeks_calendar', '=', False)]}">
+                            <field name="two_weeks_explanation" nolabel="1"/>
+                        </group>
+                            <field name="availability_ids" widget="section_one2many"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+     	</field>
+	</record>
+	
+	<record id="therapist_calendar_availability_tree_view" model="ir.ui.view">
+		<field name="name">Therapist calendar availability tree view</field>
+		<field name="model">medical.therapist.calendar.availability</field>
+		<field name="arch" type="xml">
+			<tree string="Working Time" editable="top">
+                <field name="sequence" widget="handle"/>
+                <field name="display_type" invisible="1"/>
+                <field name="display_name" width="1" string=" " attrs="{'invisible': [('display_type', '!=', 'line_section')]}"/>
+                <field name="name" attrs="{'invisible': [('display_type', '=', 'line_section')]}"/>
+                <field name="dayofweek"/>
+                <field name="day_period"/>
+                <field name="hour_from" widget="float_time"/>
+                <field name="hour_to" widget="float_time"/>
+                <field name="date_from" optional="hide"/>
+                <field name="date_to" optional="hide"/>
+                <field name="week_type" readonly="1" force_save="1" groups="base.group_no_one"/>
+            </tree>
+        </field>
+    </record>
+    
+</odoo>

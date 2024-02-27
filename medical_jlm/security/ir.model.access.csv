@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_jlm_medical_patient,medical_jlm.medical.patient,medical_jlm.model_medical_patient,base.group_user,1,1,1,1
+access_medical_jlm_medical_therapist,medical_jlm.medical.therapist,medical_jlm.model_medical_therapist,base.group_user,1,1,1,1
+access_medical_jlm_medical_therapy,medical_jlm.medical.therapy,medical_jlm.model_medical_therapist_therapy,base.group_user,1,1,1,1
+access_medical_jlm_medical_therapist_calendar,medical_jlm.medical.therapist.calendar,medical_jlm.model_medical_therapist_calendar,base.group_user,1,1,1,1
+access_medical_jlm_medical_therapist_calendar_availability,medical_jlm.medical.therapist.calendar.availability,medical_jlm.model_medical_therapist_calendar_availability,base.group_user,1,1,1,1
+access_medical_jlm_medical_patient_tag,medical_jlm.medical.patient.tag,medical_jlm.model_medical_patient_tag,base.group_user,1,1,1,1
+access_medical_jlm_medical_patient_data,medical_jlm.medical.patient.data,medical_jlm.model_medical_patient_data,base.group_user,1,1,1,1

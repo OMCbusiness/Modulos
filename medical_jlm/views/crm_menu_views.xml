@@ -1,0 +1,9 @@
+<odoo>
+	<menuitem
+        id="crm.menu_crm_lead_stage_act"
+        name="Stages"
+        sequence="0"
+        parent="crm.menu_crm_config_lead"
+        action="crm.crm_stage_action"
+        groups="sales_team.group_sale_manager"/>
+ </odoo>
